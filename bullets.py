@@ -1,3 +1,4 @@
+# http://programarcadegames.com/python_examples/show_file.php?file=game_class_example.py
 import pygame
 import random
 import math
@@ -39,7 +40,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 
         self.arm_cap = 1
-        self.arm_rate = 0.5
+        self.arm_rate = 0.4
         self.arm_progress = self.arm_cap    # set to armed
 
     def update(self):
