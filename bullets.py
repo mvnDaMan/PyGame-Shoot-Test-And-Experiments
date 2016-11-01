@@ -1,4 +1,3 @@
-# http://programarcadegames.com/python_examples/show_file.php?file=game_class_example.py
 import pygame
 import random
 import math
@@ -40,7 +39,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 
         self.arm_cap = 1
-        self.arm_rate = 1
+        self.arm_rate = 0.5
         self.arm_progress = self.arm_cap    # set to armed
 
     def update(self):
@@ -90,7 +89,7 @@ class CrazyBullet(WeirdBullet):
         self.center_y = y
         self.damage = 1
         # self.radius *= 2
-        self.radius = 30
+        self.radius = 50
         self.current_radius = 0
 
     def update(self):
@@ -166,9 +165,14 @@ class Game(object):
                     self.bullets_list.add(bullet)
                     self.all_sprites_list.add(bullet)
 
-                    bullet2 = CrazyBullet(bullet_x, self.player.rect.y)
-                    self.bullets_list.add(bullet2)
-                    self.all_sprites_list.add(bullet2)
+                    if len(self.bullets_list) < 100:
+                        bullet2 = CrazyBullet(bullet_x, self.player.rect.y)
+                        self.bullets_list.add(bullet2)
+                        self.all_sprites_list.add(bullet2)
+
+                    normal_bullet = Bullet(bullet_x, self.player.rect.y)
+                    self.bullets_list.add(normal_bullet)
+                    self.all_sprites_list.add(normal_bullet)
 
                     self.player.arm_progress = 0
                     # print("Pew")
